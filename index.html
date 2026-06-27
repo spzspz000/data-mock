@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>数字で見る、薬剤師の学び｜構成確認モック</title>
+<title>ためとこ 学習ログ統計レポート｜構成確認モック</title>
 <style>
   :root{
     --ink:#1a2b29;
-    --ink-soft:#5e706b;
+    --ink-soft:#6b6b6b;
     --paper:#fafafa;
     --card:#ffffff;
     --line:#e6e6e6;
@@ -27,49 +27,52 @@
 
   .wrap{max-width:var(--max-w);margin:0 auto;padding:0 22px}
 
-  .dummy-tag,.real-tag{display:inline-block;font-size:10.5px;font-weight:700;border-radius:3px;padding:1px 7px;letter-spacing:.03em;vertical-align:middle}
+  .real-tag,.dummy-tag{display:inline-block;font-size:10.5px;font-weight:700;border-radius:3px;padding:1px 7px;letter-spacing:.03em;vertical-align:middle}
+  .real-tag{color:#fff;background:var(--teal-deep);border:1px solid var(--teal-deep)}
   .dummy-tag{color:var(--warn);background:var(--warn-bg);border:1px solid var(--warn)}
-  .real-tag{color:var(--teal-deep);background:#e6f0ec;border:1px solid var(--teal)}
 
   /* HERO */
-  .hero{padding:64px 0 40px}
-  .eyebrow{font-size:12.5px;letter-spacing:.18em;color:var(--teal);font-weight:700;margin-bottom:18px}
-  .hero h1{font-size:clamp(28px,4.6vw,46px);line-height:1.3;font-weight:800;margin-bottom:16px}
+  .hero{padding:60px 0 36px}
+  .eyebrow{font-size:12.5px;letter-spacing:.16em;color:var(--teal);font-weight:700;margin-bottom:16px}
+  .hero h1{font-size:clamp(28px,4.4vw,44px);line-height:1.3;font-weight:800;margin-bottom:16px}
   .hero h1 em{font-style:normal;color:var(--teal-deep);border-bottom:4px solid var(--teal-soft)}
-  .hero .lead{font-size:15.5px;color:var(--ink-soft);max-width:600px}
+  .hero .lead{font-size:15.5px;color:var(--ink-soft);max-width:620px}
 
-  /* KPI row */
-  .kpi-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:34px}
-  .kpi{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:22px 20px}
-  .kpi .k-n{font-size:clamp(30px,4vw,40px);font-weight:800;color:var(--teal-deep);line-height:1}
-  .kpi .k-n small{font-size:.4em;font-weight:700;color:var(--ink)}
-  .kpi .k-l{font-size:13px;color:var(--ink-soft);margin-top:9px}
-  .kpi .k-tag{margin-top:10px}
+  /* layer header */
+  .layer{margin-top:52px}
+  .layer-head{border-top:2px solid var(--ink);padding-top:16px;margin-bottom:20px}
+  .layer-no{font-size:12px;font-weight:700;letter-spacing:.12em;color:var(--teal);margin-bottom:6px}
+  .layer-head h2{font-size:clamp(21px,3.2vw,28px);font-weight:800;line-height:1.3}
+  .layer-head p{margin-top:10px;font-size:14px;color:var(--ink-soft);max-width:680px}
 
-  /* sections */
-  .panel{margin:18px 0}
-  .panel-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:6px;flex-wrap:wrap}
-  .panel-head h2{font-size:19px;font-weight:800}
-  .panel-head .sub{font-size:13px;color:var(--ink-soft)}
-  .takeaway{font-size:13.5px;color:var(--teal-deep);background:#eaf2ef;border-left:3px solid var(--teal);border-radius:0 6px 6px 0;padding:9px 14px;margin:12px 0}
   .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
   .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:22px}
   .card.full{grid-column:1/-1}
-  .card h3{font-size:15px;font-weight:700;margin-bottom:4px}
+  .card h3{font-size:15px;font-weight:700;margin-bottom:4px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
   .card .cap{font-size:12px;color:var(--ink-soft);margin-bottom:16px}
+  .takeaway{font-size:13.5px;color:var(--teal-deep);background:#eaf2ef;border-left:3px solid var(--teal);border-radius:0 6px 6px 0;padding:9px 14px;margin-bottom:16px}
+  .note{font-size:13px;color:var(--teal-deep);background:#eaf2ef;border-left:3px solid var(--teal);border-radius:0 6px 6px 0;padding:8px 12px;margin-top:14px;line-height:1.6}
+
+  /* big stat */
+  .stat-big{font-size:clamp(40px,6vw,58px);font-weight:800;color:var(--teal-deep);line-height:1}
+  .stat-big small{font-size:.34em;font-weight:700;color:var(--ink)}
+  .stat-sub{font-size:13px;color:var(--ink-soft);margin-top:10px}
+  .stat-dummy .stat-big{color:#9aa6a2}
 
   /* line chart */
   .chart-svg{width:100%;height:auto;display:block;overflow:visible}
   .axis-lbl{font-size:10px;fill:var(--ink-soft)}
 
-  /* bar dow */
+  /* bars */
   .bar-row{display:flex;align-items:center;gap:12px;margin:9px 0}
-  .bar-row .d{width:24px;font-size:13px;font-weight:700}
+  .bar-row .d{width:26px;font-size:13px;font-weight:700}
   .bar-row .d.we{color:var(--ink-soft)}
   .bar-track{flex:1;background:#eef0ec;border-radius:5px;height:22px;overflow:hidden}
   .bar-fill{height:100%;border-radius:5px;background:var(--teal)}
   .bar-fill.we{background:#b8c9c4}
-  .bar-row .v{width:40px;text-align:right;font-size:12px;color:var(--ink-soft);font-variant-numeric:tabular-nums}
+  .bar-fill.dm{background:#c4ccc9}
+  .bar-row .v{width:44px;text-align:right;font-size:12px;color:var(--ink-soft);font-variant-numeric:tabular-nums}
 
   /* heatmap */
   .heat-card{overflow-x:auto}
@@ -82,33 +85,21 @@
   .legend-scale{display:flex;gap:2px}
   .legend-scale i{width:20px;height:10px;border-radius:2px;display:block}
 
+  /* horizontal領域 bars (dummy) */
+  .topic-row{display:flex;align-items:center;gap:12px;margin:11px 0}
+  .topic-row .t{width:96px;font-size:13px;font-weight:600;flex-shrink:0}
+  .topic-row .v{width:38px;text-align:right;font-size:12px;color:var(--ink-soft)}
+
   /* donut */
-  .donut-flex{display:flex;align-items:center;gap:24px;flex-wrap:wrap}
-  .donut{position:relative;width:160px;height:160px;flex-shrink:0}
+  .donut-flex{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+  .donut{position:relative;width:150px;height:150px;flex-shrink:0}
   .donut .ctr{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
-  .donut .ctr .n{font-size:34px;font-weight:800;color:var(--teal-deep);line-height:1}
+  .donut .ctr .n{font-size:30px;font-weight:800;line-height:1}
   .donut .ctr .l{font-size:11px;color:var(--ink-soft);margin-top:3px}
-  .donut-leg li{list-style:none;font-size:13px;color:var(--ink-soft);margin:7px 0;display:flex;align-items:center;gap:8px}
-  .donut-leg .dot{width:11px;height:11px;border-radius:3px;display:inline-block}
-
-  /* dummy scale */
-  .dummy-sec{margin-top:30px;border-top:2px dashed var(--warn);padding-top:26px}
-  .dummy-sec .ds-note{font-size:13px;color:var(--warn);font-weight:600;margin-bottom:16px}
-  .scale-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-  .scale-cell{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:22px 16px;text-align:center}
-  .scale-cell .n{font-size:clamp(28px,3.6vw,38px);font-weight:800;color:#9aa6a2;line-height:1}
-  .scale-cell .n small{font-size:.42em;font-weight:700}
-  .scale-cell .l{font-size:12.5px;color:var(--ink-soft);margin-top:9px}
-  .scale-cell .dummy-tag{margin-top:9px}
-
-  /* self check */
-  .self-q{margin-top:30px;background:var(--ink);color:var(--paper);border-radius:12px;padding:30px 26px;text-align:center}
-  .self-q h3{font-size:21px;font-weight:700;margin-bottom:6px}
-  .self-q p{font-size:14px;opacity:.82}
 
   /* CTA */
-  .cta{margin-top:18px;background:var(--teal-deep);border-radius:14px;color:#fff;text-align:center;padding:54px 26px}
-  .cta h2{font-size:clamp(22px,3.6vw,32px);font-weight:800;margin-bottom:12px}
+  .cta{margin-top:54px;background:var(--teal-deep);border-radius:14px;color:#fff;text-align:center;padding:52px 26px}
+  .cta h2{font-size:clamp(22px,3.4vw,30px);font-weight:800;margin-bottom:12px}
   .cta p{color:#cfe3dd;max-width:460px;margin:0 auto 26px;font-size:15px}
   .cta-btns{display:flex;gap:13px;justify-content:center;flex-wrap:wrap}
   .btn{display:inline-block;padding:14px 32px;border-radius:7px;font-weight:700;font-size:15px;text-decoration:none;transition:.15s}
@@ -120,16 +111,15 @@
   footer{padding:26px 0;text-align:center;font-size:12px;color:var(--ink-soft)}
 
   @media(max-width:780px){
-    .hero{padding:44px 0 30px}
-    .kpi-row{grid-template-columns:1fr}
-    .grid-2{grid-template-columns:1fr}
-    .scale-grid{grid-template-columns:1fr 1fr}
+    .hero{padding:42px 0 28px}
+    .grid-2,.grid-3{grid-template-columns:1fr}
+    .layer{margin-top:40px}
   }
 </style>
 </head>
 <body>
 
-<div class="dummy-bar">⚠ 構成確認用モック ／ <span>数字・グラフはダミー（仮）です。「実データ」タグ付きのみ実測値、それ以外は差し替え前提です。</span></div>
+<div class="dummy-bar">⚠ 構成確認用モック ／ <span>「実データ」タグのみ実測値。それ以外（「ダミー」タグ）は仮の数値で、確定後に差し替えます。</span></div>
 
 <div class="wrap">
 
@@ -137,125 +127,125 @@
   <header class="hero">
     <div class="eyebrow">DATA REPORT ／ 数字で見る、薬剤師の学び</div>
     <h1>ためとこ受講者データ<br><em>学習ログ統計レポート</em></h1>
-    <p class="lead">ためとこ会員の学習ログイン記録をもとに、薬剤師が「いつ・どの曜日に」学んでいるかを集計しました。日々の学びのリズムを、データから読み解きます。</p>
-
-    <div class="kpi-row">
-      <div class="kpi">
-        <div class="k-n">平日<small>に集中</small></div>
-        <div class="k-l">受講者の学習は平日が中心。とくに火〜木に多く学ばれています。</div>
-        <div class="k-tag"><span class="real-tag">実データ</span></div>
-      </div>
-      <div class="kpi">
-        <div class="k-n">14<small>時がピーク</small></div>
-        <div class="k-l">最も学習が多い時間帯。お昼すぎの落ち着いた時間に学ぶ人が集まります。</div>
-        <div class="k-tag"><span class="real-tag">実データ</span></div>
-      </div>
-      <div class="kpi">
-        <div class="k-n">00<small>%が継続</small></div>
-        <div class="k-l">受講を始めた人のうち、学習を継続している割合（※ここに継続率などの成果数字を入れる想定）。</div>
-        <div class="k-tag"><span class="dummy-tag">ダミー</span></div>
-      </div>
-    </div>
+    <p class="lead">ためとこ会員の学習記録をもとに、薬剤師が「いつ・どのように・どれだけ」学んでいるかを集計しました。日々の学びの実態を、データから読み解きます。</p>
   </header>
 
-  <!-- PANEL 1: 時間帯 -->
-  <div class="panel">
-    <div class="panel-head">
-      <h2>① 1日のなかの、学びの波</h2>
-      <span class="sub">時間帯別の学習ログイン</span>
+  <!-- ============ レイヤー1 ============ -->
+  <section class="layer">
+    <div class="layer-head">
+      <div class="layer-no">LAYER 1</div>
+      <h2>いつ学ばれているか</h2>
+      <p>ためとこの学習は、夜にまとまった時間を取るのではなく、日中の手が空いた時間に少しずつ積み重ねられていると考えられます。一般的な学習サービスが夜に伸びるのに対し、ためとこは平日の昼に山が立ちます。診療が一段落する時間帯の休憩や中抜けに学習が組み込まれ、出勤前の朝にも学ばれている様子がうかがえます。薬剤師の働き方に沿った学習スタイルが表れています。</p>
     </div>
-    <div class="takeaway">朝9時台にひとつ目の山、お昼すぎの14時が最大のピーク。一斉の昼休みではなく、出勤前や手が空いた時間に学ぶ薬剤師らしいカーブです。</div>
-    <div class="card full">
-      <h3>時間帯別 学習ログイン <span class="real-tag">実データ</span></h3>
-      <div class="cap">0〜23時の合計（全期間）。山がそのまま「学びやすい時間」を表します。</div>
-      <svg class="chart-svg" id="lineChart" viewBox="0 0 760 240" preserveAspectRatio="none"></svg>
-    </div>
-  </div>
 
-  <!-- PANEL 2: 曜日 + 平日休日 -->
-  <div class="panel">
-    <div class="panel-head">
-      <h2>② 何曜日に学んでいる？</h2>
-      <span class="sub">曜日別の傾向</span>
+    <div class="card full">
+      <h3>時間帯別の学習ログイン <span class="real-tag">実データ</span></h3>
+      <div class="cap">0〜23時の合計。山がそのまま「学びやすい時間」を表します。</div>
+      <svg class="chart-svg" id="lineChart" viewBox="0 0 760 240" preserveAspectRatio="none"></svg>
+      <div class="note">朝9時台と14時に山。最大のピークは14時。</div>
     </div>
-    <div class="takeaway">学びは平日に集中。週の半ばが最も多く、土日はぐっと落ち着きます。仕事のある日のスキマに学習が組み込まれている様子がうかがえます。</div>
-    <div class="grid-2">
+
+    <div class="grid-2" style="margin-top:18px">
       <div class="card">
-        <h3>曜日別 学習ログイン <span class="real-tag">実データ</span></h3>
-        <div class="cap">火〜木がピーク。金曜から少しずつ下がります。</div>
+        <h3>曜日別の学習ログイン <span class="real-tag">実データ</span></h3>
+        <div class="cap">平日が中心。なかでも火〜木が多く学ばれています。</div>
         <div id="dowBars"></div>
+        <div class="note">火〜木が最も多く、土日は落ち込む。</div>
       </div>
       <div class="card">
         <h3>平日 vs 休日（昼13〜15時） <span class="real-tag">実データ</span></h3>
         <div class="cap">同じ昼の時間帯でも、平日は休日の約1.6倍。</div>
         <div class="donut-flex">
           <div class="donut">
-            <svg width="160" height="160" viewBox="0 0 160 160">
-              <circle cx="80" cy="80" r="64" fill="none" stroke="#dfe6e3" stroke-width="22"/>
-              <circle cx="80" cy="80" r="64" fill="none" stroke="#2f7d6e" stroke-width="22"
-                stroke-dasharray="402" stroke-dashoffset="155" stroke-linecap="butt" transform="rotate(-90 80 80)"/>
+            <svg width="150" height="150" viewBox="0 0 150 150">
+              <circle cx="75" cy="75" r="60" fill="none" stroke="#e0e0e0" stroke-width="20"/>
+              <circle cx="75" cy="75" r="60" fill="none" stroke="#2f7d6e" stroke-width="20"
+                stroke-dasharray="377" stroke-dashoffset="145" stroke-linecap="butt" transform="rotate(-90 75 75)"/>
             </svg>
-            <div class="ctr"><div class="n">1.6<small style="font-size:.45em">倍</small></div><div class="l">平日昼の濃さ</div></div>
+            <div class="ctr"><div class="n" style="color:var(--teal-deep)">1.6<small style="font-size:.45em">倍</small></div><div class="l">平日昼の濃さ</div></div>
           </div>
-          <ul class="donut-leg">
-            <li><span class="dot" style="background:#2f7d6e"></span>平日 昼13〜15時</li>
-            <li><span class="dot" style="background:#b8c9c4"></span>休日 昼13〜15時</li>
-            <li style="margin-top:10px;color:var(--teal-deep);font-weight:600">平日のほうがよく学ばれています</li>
+          <ul style="list-style:none">
+            <li style="font-size:13px;color:var(--ink-soft);margin:7px 0"><span style="display:inline-block;width:11px;height:11px;border-radius:3px;background:#2f7d6e;margin-right:8px"></span>平日 昼13〜15時</li>
+            <li style="font-size:13px;color:var(--ink-soft);margin:7px 0"><span style="display:inline-block;width:11px;height:11px;border-radius:3px;background:#b8c9c4;margin-right:8px"></span>休日 昼13〜15時</li>
+            <li style="font-size:13px;color:var(--ink);font-weight:600;margin-top:10px">平日のほうがよく学ばれています</li>
           </ul>
         </div>
+        <div class="note">同じ昼13〜15時でも、平日は休日の約1.6倍。</div>
       </div>
     </div>
-  </div>
 
-  <!-- PANEL 3: ヒートマップ -->
-  <div class="panel">
-    <div class="panel-head">
-      <h2>③ 曜日 × 時間で、いちばん濃いのは？</h2>
-      <span class="sub">学びのゴールデンタイム</span>
-    </div>
-    <div class="takeaway">色が濃いほどログインが多い時間帯。火〜木の14時前後がくっきり濃く、ここが薬剤師の「学びのゴールデンタイム」です。</div>
-    <div class="card full heat-card">
+    <div class="card full heat-card" style="margin-top:18px">
       <h3>曜日 × 時間 ヒートマップ <span class="real-tag">実データ</span></h3>
-      <div class="cap">セルの値＝1日あたり平均ログイン（曜日の日数で補正）。※全期間の一部サンプル。</div>
+      <div class="cap">色が濃いほどログインが多い時間帯。※全期間の一部サンプル。</div>
       <div class="heat-grid" id="heatGrid"></div>
       <div class="heat-legend"><span>少ない</span><span class="legend-scale" id="legendScale"></span><span>多い</span></div>
+      <div class="note">最も濃いのは火〜木の14時前後。</div>
     </div>
-  </div>
+  </section>
 
-        <div class="scale-cell"><div class="n">000<small>講座</small></div><div class="l">公開コンテンツ数</div><div class="dummy-tag">ダミー</div></div>
-        <div class="scale-cell"><div class="n">00,000<small>h</small></div><div class="l">累計学習時間</div><div class="dummy-tag">ダミー</div></div>
-        <div class="scale-cell"><div class="n">00<small>単位</small></div><div class="l">取得できる認定単位</div><div class="dummy-tag">ダミー</div></div>
+  <!-- ============ レイヤー2 ============ -->
+  <section class="layer">
+    <div class="layer-head">
+      <div class="layer-no">LAYER 2</div>
+      <h2>どのように学ばれているか</h2>
+      <p>長い時間をまとめて確保するのではなく、短い学習を週に何度も繰り返す使い方が中心だと考えられます。1回20分弱・1本完結というスタイルが、まとまった時間を取りにくい中でも学習を始めやすく、続けやすくしているとうかがえます。<span style="color:var(--ink-soft)">※数値は確定後に差し替え</span></p>
+    </div>
+
+    <div class="grid-3">
+      <div class="card stat-dummy">
+        <h3>1回あたりの平均学習時間 <span class="dummy-tag">ダミー</span></h3>
+        <div class="cap">1回の学習セッションの平均（仮）</div>
+        <div class="stat-big">18<small>分</small></div>
+        <div class="note">1回あたり約18分。</div>
+      </div>
+      <div class="card stat-dummy">
+        <h3>1講座あたりの長さ <span class="dummy-tag">ダミー</span></h3>
+        <div class="cap">1本で完結する標準的な長さ（仮）</div>
+        <div class="stat-big">15<small>分</small></div>
+        <div class="note">1講座15分前後で完結。</div>
+      </div>
+      <div class="card stat-dummy">
+        <h3>平均学習頻度 <span class="dummy-tag">ダミー</span></h3>
+        <div class="cap">会員1人あたりの週平均（仮）</div>
+        <div class="stat-big">週3<small>回</small></div>
+        <div class="note">週あたり平均3回。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ レイヤー3 ============ -->
+  <section class="layer">
+    <div class="layer-head">
+      <div class="layer-no">LAYER 3</div>
+      <h2>どれだけ学ばれているか</h2>
+      <p>多くの薬剤師に選ばれ、学びの場として使い続けられていると考えられます。学習は糖尿病・高血圧といった実務に直結する慢性疾患に集まり、一人あたりの受講数も積み上がっています。特定の領域に偏らず複数講座を継続的に受講する傾向がうかがえ、単発で終わらない厚みのある使われ方が見えてきます。<span style="color:var(--ink-soft)">※数値は確定後に差し替え</span></p>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3>人気の学習領域 <span class="dummy-tag">ダミー</span></h3>
+        <div class="cap">よく学ばれている領域の分布（仮）</div>
+        <div id="topicBars"></div>
+        <div class="note">糖尿病・高血圧が上位。慢性疾患に集中。</div>
+      </div>
+      <div class="card stat-dummy">
+        <h3>累計学習時間 <span class="dummy-tag">ダミー</span></h3>
+        <div class="cap">会員全体の学習時間の累計（丸めて表示／仮）</div>
+        <div class="stat-big">のべ 12,000<small>時間</small></div>
+        <hr style="border:none;border-top:1px solid var(--line);margin:18px 0">
+        <h3 style="margin-bottom:4px">一人あたりの受講数 <span class="dummy-tag">ダミー</span></h3>
+        <div class="stat-big" style="font-size:38px">24<small>講座</small></div>
+        <div class="note">累計のべ12,000時間、一人あたり24講座。</div>
       </div>
     </div>
 
-    <div class="panel">
-      <div class="panel-head"><h2>⑤ 始めた人は、続いている？</h2><span class="sub">継続の数字</span></div>
-      <div class="grid-2">
-        <div class="card">
-          <h3>継続率 <span class="dummy-tag">ダミー</span></h3>
-          <div class="cap">月単位の継続率（仮）</div>
-          <div class="donut-flex">
-            <div class="donut">
-              <svg width="160" height="160" viewBox="0 0 160 160">
-                <circle cx="80" cy="80" r="64" fill="none" stroke="#e3e8e5" stroke-width="22"/>
-                <circle cx="80" cy="80" r="64" fill="none" stroke="#aeb9b5" stroke-width="22"
-                  stroke-dasharray="402" stroke-dashoffset="120" stroke-linecap="butt" transform="rotate(-90 80 80)"/>
-              </svg>
-              <div class="ctr"><div class="n" style="color:#9aa6a2">00<small style="font-size:.45em">%</small></div><div class="l">継続率（仮）</div></div>
-            </div>
-            <ul class="donut-leg"><li>実データ確定後に差し替え</li></ul>
-          </div>
-        </div>
-        <div class="card">
-          <h3>更新・受講の数字 <span class="dummy-tag">ダミー</span></h3>
-          <div class="cap">いずれも仮の数値です</div>
-          <div class="bar-row"><span class="d" style="width:auto;min-width:120px;font-weight:600">更新時の単位取得率</span><div class="bar-track"><div class="bar-fill we" style="width:62%"></div></div><span class="v">00%</span></div>
-          <div class="bar-row"><span class="d" style="width:auto;min-width:120px;font-weight:600">月平均 受講回数</span><div class="bar-track"><div class="bar-fill we" style="width:44%"></div></div><span class="v">00</span></div>
-          <div class="bar-row"><span class="d" style="width:auto;min-width:120px;font-weight:600">平均継続日数</span><div class="bar-track"><div class="bar-fill we" style="width:71%"></div></div><span class="v">00</span></div>
-        </div>
-      </div>
+    <div class="card full" style="margin-top:18px">
+      <h3>学習量の推移 <span class="dummy-tag">ダミー</span></h3>
+      <div class="cap">月ごとの学習量の推移（指数化／仮）。サービスの広がりを表します。</div>
+      <svg class="chart-svg" id="trendChart" viewBox="0 0 760 200" preserveAspectRatio="none"></svg>
+      <div class="note">学習量は月を追って増加傾向。</div>
     </div>
-  </div>
+  </section>
 
   <!-- CTA -->
   <div class="cta">
@@ -267,50 +257,38 @@
     </div>
   </div>
 
-  <footer>© ためとこ ／ 本ページは構成確認用モックです（数値はダミー。「実データ」タグのみ実測）</footer>
+  <footer>© ためとこ ／ 本ページは構成確認用モックです（「実データ」タグ以外の数値はダミー）</footer>
 
 </div>
 
 <script>
   const TEAL='#2f7d6e', TEALD='#1f5a4f';
 
-  /* ---- 折れ線（時間帯） ---- */
+  /* 折れ線（時間帯・実データ） */
   const HOUR=[4308,2299,1208,788,757,1317,2894,5247,8739,12746,12017,11614,12015,14391,15639,14704,13507,12776,11083,10416,9976,9936,9457,7276];
   (function(){
     const W=760,H=240,pad={l:34,r:14,t:18,b:26};
     const max=Math.max(...HOUR);
-    const x=i=>pad.l+(W-pad.l-pad.r)*i/23;
-    const y=v=>pad.t+(H-pad.t-pad.b)*(1-v/max);
-    let svg=document.getElementById('lineChart');
+    const x=i=>pad.l+(W-pad.l-pad.r)*i/23, y=v=>pad.t+(H-pad.t-pad.b)*(1-v/max);
     let g='';
-    // grid + y labels
-    [0,.5,1].forEach(t=>{const v=max*t,yy=y(v);g+=`<line x1="${pad.l}" y1="${yy}" x2="${W-pad.r}" y2="${yy}" stroke="#eef0ec"/>`;g+=`<text class="axis-lbl" x="2" y="${yy+3}">${Math.round(v/1000)}k</text>`;});
-    // area
+    [0,.5,1].forEach(t=>{const v=max*t,yy=y(v);g+=`<line x1="${pad.l}" y1="${yy}" x2="${W-pad.r}" y2="${yy}" stroke="#eef0ec"/><text class="axis-lbl" x="2" y="${yy+3}">${Math.round(v/1000)}k</text>`;});
     let pts=HOUR.map((v,i)=>`${x(i)},${y(v)}`).join(' ');
     g+=`<polygon points="${pad.l},${y(0)} ${pts} ${W-pad.r},${y(0)}" fill="${TEAL}" opacity="0.10"/>`;
     g+=`<polyline points="${pts}" fill="none" stroke="${TEAL}" stroke-width="2.5"/>`;
-    // peak marker at 14
-    g+=`<circle cx="${x(14)}" cy="${y(HOUR[14])}" r="5" fill="${TEALD}"/>`;
-    g+=`<text x="${x(14)}" y="${y(HOUR[14])-12}" text-anchor="middle" font-size="12" font-weight="700" fill="${TEALD}">14時 ピーク</text>`;
-    // x labels
+    g+=`<circle cx="${x(14)}" cy="${y(HOUR[14])}" r="5" fill="${TEALD}"/><text x="${x(14)}" y="${y(HOUR[14])-12}" text-anchor="middle" font-size="12" font-weight="700" fill="${TEALD}">14時 ピーク</text>`;
     [0,6,9,12,14,18,21,23].forEach(i=>{g+=`<text class="axis-lbl" x="${x(i)}" y="${H-8}" text-anchor="middle">${i}時</text>`;});
-    svg.innerHTML=g;
+    document.getElementById('lineChart').innerHTML=g;
   })();
 
-  /* ---- 曜日棒 ---- */
-  const DOWV=[41578,44404,44480,44831,42249,33477,32760];
-  const DOWL=['月','火','水','木','金','土','日'];
+  /* 曜日棒（実データ） */
+  const DOWV=[41578,44404,44480,44831,42249,33477,32760], DOWL=['月','火','水','木','金','土','日'];
   (function(){
-    const max=Math.max(...DOWV);
-    let h='';
-    DOWV.forEach((v,i)=>{
-      const we=i>=5;
-      h+=`<div class="bar-row"><span class="d${we?' we':''}">${DOWL[i]}</span><div class="bar-track"><div class="bar-fill${we?' we':''}" style="width:${(v/max*100).toFixed(0)}%"></div></div><span class="v">${(v/1000).toFixed(1)}k</span></div>`;
-    });
+    const max=Math.max(...DOWV);let h='';
+    DOWV.forEach((v,i)=>{const we=i>=5;h+=`<div class="bar-row"><span class="d${we?' we':''}">${DOWL[i]}</span><div class="bar-track"><div class="bar-fill${we?' we':''}" style="width:${(v/max*100).toFixed(0)}%"></div></div><span class="v">${(v/1000).toFixed(1)}k</span></div>`;});
     document.getElementById('dowBars').innerHTML=h;
   })();
 
-  /* ---- ヒートマップ ---- */
+  /* ヒートマップ（実データ） */
   const HEAT=[[21,10,4,2,3,5,15,33,58,68,54,51,57,82,92,74,66,59,53,52,53,55,52,36],
   [19,8,3,2,3,6,18,36,64,77,60,53,66,86,98,81,68,63,58,56,54,57,52,37],
   [19,9,4,2,3,6,17,37,62,75,62,58,66,90,93,81,69,67,58,57,55,58,54,36],
@@ -321,15 +299,33 @@
   const HD=['月','火','水','木','金','土','日'], HMAX=98;
   function hc(v){const t=Math.pow(v/HMAX,.75);const a=[238,240,236],b=[31,90,79];return `rgb(${Math.round(a[0]+(b[0]-a[0])*t)},${Math.round(a[1]+(b[1]-a[1])*t)},${Math.round(a[2]+(b[2]-a[2])*t)})`;}
   (function(){
-    const grid=document.getElementById('heatGrid');
-    grid.insertAdjacentHTML('beforeend','<div></div>');
+    const grid=document.getElementById('heatGrid');grid.insertAdjacentHTML('beforeend','<div></div>');
     for(let h=0;h<24;h++)grid.insertAdjacentHTML('beforeend',`<div class="h-htop">${h%3===0?h:''}</div>`);
-    for(let d=0;d<7;d++){
-      grid.insertAdjacentHTML('beforeend',`<div class="h-dow${d>=5?' we':''}">${HD[d]}</div>`);
-      for(let h=0;h<24;h++){const v=HEAT[d][h];const t=v>=85?`<span style="color:#fff;font-size:9px;font-weight:700">${v}</span>`:'';grid.insertAdjacentHTML('beforeend',`<div class="h-cell" style="background:${hc(v)}" title="${HD[d]}曜${h}時 / ${v}">${t}</div>`);}
-    }
-    const ls=document.getElementById('legendScale');
-    [5,25,50,75,98].forEach(v=>ls.insertAdjacentHTML('beforeend',`<i style="background:${hc(v)}"></i>`));
+    for(let d=0;d<7;d++){grid.insertAdjacentHTML('beforeend',`<div class="h-dow${d>=5?' we':''}">${HD[d]}</div>`);
+      for(let h=0;h<24;h++){const v=HEAT[d][h];const t=v>=85?`<span style="color:#fff;font-size:9px;font-weight:700">${v}</span>`:'';grid.insertAdjacentHTML('beforeend',`<div class="h-cell" style="background:${hc(v)}" title="${HD[d]}曜${h}時 / ${v}">${t}</div>`);}}
+    const ls=document.getElementById('legendScale');[5,25,50,75,98].forEach(v=>ls.insertAdjacentHTML('beforeend',`<i style="background:${hc(v)}"></i>`));
+  })();
+
+  /* 人気領域（ダミー） */
+  const TOPIC=[['糖尿病',100,'38'],['高血圧',82,'31'],['認定薬剤師',74,'28'],['呼吸器疾患',61,'23'],['精神疾患',48,'18']];
+  (function(){
+    let h='';TOPIC.forEach(([n,v,p])=>{h+=`<div class="topic-row"><span class="t">${n}</span><div class="bar-track"><div class="bar-fill dm" style="width:${v}%"></div></div><span class="v">${p}%</span></div>`;});
+    document.getElementById('topicBars').innerHTML=h;
+  })();
+
+  /* 月別推移（ダミー） */
+  const TREND=[40,46,52,49,58,63,61,70,74,72,82,90];
+  const TML=['1月','','3月','','5月','','7月','','9月','','11月',''];
+  (function(){
+    const W=760,H=200,pad={l:30,r:14,t:16,b:24};
+    const max=100;const x=i=>pad.l+(W-pad.l-pad.r)*i/(TREND.length-1),y=v=>pad.t+(H-pad.t-pad.b)*(1-v/max);
+    let g='';
+    [0,.5,1].forEach(t=>{const yy=y(max*t);g+=`<line x1="${pad.l}" y1="${yy}" x2="${W-pad.r}" y2="${yy}" stroke="#eef0ec"/>`;});
+    let pts=TREND.map((v,i)=>`${x(i)},${y(v)}`).join(' ');
+    g+=`<polygon points="${pad.l},${y(0)} ${pts} ${W-pad.r},${y(0)}" fill="#9aa6a2" opacity="0.14"/>`;
+    g+=`<polyline points="${pts}" fill="none" stroke="#9aa6a2" stroke-width="2.5" stroke-dasharray="5 4"/>`;
+    TREND.forEach((v,i)=>{if(TML[i])g+=`<text class="axis-lbl" x="${x(i)}" y="${H-7}" text-anchor="middle">${TML[i]}</text>`;});
+    document.getElementById('trendChart').innerHTML=g;
   })();
 </script>
 
